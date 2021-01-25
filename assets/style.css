@@ -46,9 +46,10 @@
     clear: both;
     display: table;
   }
-
-  .cityCont {
-    
-    border-style: solid;
+  .col-sm-8 {
+    margin: auto;
+  }
+  #cityCont {
+    border-style: solid, 1px;
     border-color: black;
   }

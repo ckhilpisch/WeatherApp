@@ -19,30 +19,28 @@
         <div class="row">
             <div class="col-sm-4">
                 <form class="example" action="action_page.php">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <input type="text" id="cityEntered"  placeholder="Search.." name="search">
+                <button type="submit" id="weatherCity"><i class="fa fa-search"></i></button>
                 </form>
-                <div id="cities"></div>
+                <div id="citiesButtons"></div>
             </div>        
-            <div class="col-sm-8" id="cityCont">
-                <h2 id="city"></h2>
-                <p id="temp"></p>
-                <p id="humidity"></p>
-                <p id="windSpeed"></p>
-                <p id="uvIndex"></p>
-
-
-            </div>    
+            <div class="col-sm-8">
+                <div id="cityCont">
+                    <h2 id="city"></h2>
+                    <br>
+                        <p id="temp"></p>
+                        <p id="humidity"></p>
+                        <p id="windSpeed"></p>
+                        <p id="uvIndex"></p> 
+                </div>   
+                <br>
+                <div id="futureWeather">
+                    <h2 id="fiveDay">5 Day Forecast</h2>
+                    <div id="foreCast"></div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-   
-
-
-
-
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="assets/script.js"></script>
