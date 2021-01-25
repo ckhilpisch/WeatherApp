@@ -30,7 +30,25 @@ $.ajax ({
     $("#city").html(response.name);
 
 });
+
 };
+// create a function so that the buttons of each city chosen render on the page
+function renderButtons() {
+    $("#citiesButtons").empty();
+    for (var i = 0; i < cities.length; i++) {
+
+      var button = $("<button>");
+      button.attr("class", "city");
+      button.attr("cityName", cities[i]);
+      button.text(cities[i]);
+
+      $("#citiesButtons").append(button);
+
+    }
+  }
+  renderButtons ();
+
+
 
 showWeather();
 
