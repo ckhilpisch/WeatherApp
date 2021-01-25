@@ -30,11 +30,17 @@ $.ajax ({
     
         // code for the UV index response
         // console logging to find appropriate information
-        console.log(response);
-        console.log(response.current.temp);
-        console.log(response.current.humidity);
-        console.log(response.current.wind_speed);
-        console.log(response.current.uvi);
+        // console.log(response);
+        // console.log(response.current.temp);
+        // console.log(response.current.humidity);
+        // console.log(response.current.wind_speed);
+        // console.log(response.current.uvi);
+        var tempF = (response.current.temp-273.15) *1.80 +32;
+
+        $("#temp").html("Temperature: " +tempF);
+        $("#humidity").html("Humidity: " + response.current.humidity);
+        $("#windSpeed").html("Wind Speed: " + response.current.wind_speed);
+        $("#uvIndex").html("UV Index: " + response.current.uvi);
 
 
     
