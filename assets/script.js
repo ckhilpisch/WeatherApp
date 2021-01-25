@@ -15,23 +15,28 @@ $.ajax ({
     url: queryURL,
     method: "GET"
 }).then(function(response){
-
-    // code for intial information response
-    console.log(response);
-
+   // code for intial information response
     var lat = response.coord.lat;
     var lon = response.coord.lon;
+    console.log(lat);
+    console.log(lon);
     
     var queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
     
     $.ajax ({
-        url: queryURL,
+        url: queryURL2,
         method: "GET"
     }).then(function(response){
     
         // code for the UV index response
-    
+        // console logging to find appropriate information
         console.log(response);
+        console.log(response.current.temp);
+        console.log(response.current.humidity);
+        console.log(response.current.wind_speed);
+        console.log(response.current.uvi);
+
+
     
     });
 
