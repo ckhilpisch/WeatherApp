@@ -46,3 +46,9 @@
     clear: both;
     display: table;
   }
+
+  .cityCont {
+    
+    border-style: solid;
+    border-color: black;
+  }
