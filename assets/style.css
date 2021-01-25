@@ -53,3 +53,10 @@
     border-style: solid, 1px;
     border-color: black;
   }
+
+  .city {
+    width: 400px;
+    text-align: center;
+    background-color: grey;
+    color: white;
+  }
