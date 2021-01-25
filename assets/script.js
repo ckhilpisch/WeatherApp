@@ -1,9 +1,9 @@
 var apiKey = "73d3cee72322c512646546f162d5afe5";
 var cities = []
+// function showWeather () {
 
-function showWeather () {
-
-var cityName = $("#cityEntered").val().trim();
+// var cityName = $("#cityEntered").val().trim();
+var cityName = "Minneapolis"
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
   
@@ -14,41 +14,44 @@ $.ajax ({
 
     var lat = response.coord.lat;
     var lon = response.coord.lon;
-    var queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey;
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly&units=imperial&appid=" + apiKey;
    
     $.ajax ({
         url: queryURL2,
         method: "GET"
     }).then(function(response){
-        var tempF = (response.current.temp-273.15) *1.80 +32;
-        $("#temp").html("Temperature: " +tempF.toFixed(2) + "  &deg F");
+        
+        $("#temp").html("Temperature: " + response.current.temp +"  &deg F");
         $("#humidity").html("Humidity: " + response.current.humidity +"%");
         $("#windSpeed").html("Wind Speed: " + response.current.wind_speed +" MPH");
         $("#uvIndex").html("UV Index: " + response.current.uvi);
+        console.log(queryURL2);
+
+        
     });
 
     $("#city").html(response.name);
 
 });
 
-};
+// };
 // create a function so that the buttons of each city chosen render on the page
-function renderButtons() {
-    $("#citiesButtons").empty();
-    for (var i = 0; i < cities.length; i++) {
+// function renderButtons() {
+//     $("#citiesButtons").empty();
+//     for (var i = 0; i < cities.length; i++) {
 
-      var button = $("<button>");
-      button.attr("class", "city");
-      button.attr("cityName", cities[i]);
-      button.text(cities[i]);
+//       var button = $("<button>");
+//       button.attr("class", "city");
+//       button.attr("cityName", cities[i]);
+//       button.text(cities[i]);
 
-      $("#citiesButtons").append(button);
+//       $("#citiesButtons").append(button);
 
-    }
-  }
-  renderButtons ();
+//     }
+//   }
+//   renderButtons ();
 
 
 
-showWeather();
+// showWeather();
 
