@@ -60,6 +60,7 @@
     text-align: center;
     background-color: rgb(14, 209, 216);
     color: white;
+    margin: 10px;
   }
 
   .daily {
@@ -68,4 +69,8 @@
     width: 100%;
     height:200px;
 
+  }
+
+  .example {
+    background-color: teal;
   }

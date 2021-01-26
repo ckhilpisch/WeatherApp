@@ -79,10 +79,23 @@ $.ajax ({
                 temp : response.daily[i].temp.day,
                 date : moment((response.daily[i].dt), "X").format("MM/DD/YY"),
                 humidity : response.daily[i].humidity, 
-                icon : "https://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png"});
+                icon : "https://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png",});
         }
         
-        console.log(dailyForecast);
+        // console.log(dailyForecast);
+        var $forecast = $(".card-forecast");
+
+        for (var i = 0; i < dailyForecast.length; i++) {
+        var $element = $forecast.eq(i);
+        var currentDay = dailyForecast[i];
+        $element.find(".card-title").text(currentDay.date);
+        $element.find(".icon").attr("src", currentDay.icon);
+        $element.find(".forecastTemp").html("Temp: " + currentDay.temp +"  &deg F" );
+        $element.find(".forecastHumidity").html("Humidity: " + currentDay.humidity + " %");
+
+
+    // TODO : Edit additional elements here...
+}
 
     });
     $("#city").html(response.name);

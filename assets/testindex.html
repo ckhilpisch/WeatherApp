@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    var apiKey = "73d3cee72322c512646546f162d5afe5";    
+    var city = "Minneapolis";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
+  
+$.ajax ({
+    url: queryURL,
+    method: "GET"
+}).then(function(response) {
+    console.log(queryURL);
+})
+
+    </script>
+</body>
+</html>
