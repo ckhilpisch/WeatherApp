@@ -1,5 +1,6 @@
 var apiKey = "73d3cee72322c512646546f162d5afe5";
-var cities = []
+var cities = [];
+var temp = (".temp");
 function showWeather () {
     city = $("#cityEntered").val().trim();
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
@@ -31,46 +32,53 @@ $.ajax ({
         // var unix_date = response.daily[0].dt
         // var date = moment(unix_date, "X");
         // console.log(date.format("MM/DD/YY"));
-        var foreDate = [];
-        var foreTemp = [];
-        var foreHumid = [];
-        var foreIcon = [];
+        // var foreDate = [];
+        // var foreTemp = [];
+        // var foreHumid = [];
+        // var foreIcon = [];
         
-        function dailyTemp() {
-            for (i =0; i < 5; i++) {
-                var dailyTemp = response.daily[i].temp.day
-                foreTemp.push(dailyTemp);
-            }
-        }
-        function dailyDate() {
-            for (i =0; i < 5; i++) {
-                var unix_date = response.daily[i].dt;
-                var date = moment(unix_date, "X").format("MM/DD/YY");
-                foreDate.push(date);
-            }
-        }
-        function dailyHumid() {
-            for (i =0; i < 5; i++) {
-                var dailyHumid = response.daily[i].humidity;
-                foreHumid.push(dailyHumid);
-            }
-        }
-        function dailyIcon() {
-            for (i =0; i < 5; i++) {
-                var dailyIcon = response.daily[i].weather[0].icon;
-                foreIcon.push(dailyIcon);
-            }
-        }
+        // function dailyTemp() {
+        //     for (i =0; i < 5; i++) {
+        //         var dailyTemp = response.daily[i].temp.day
+        //         foreTemp.push(dailyTemp);
+        //     }
+        // }
+        // function dailyDate() {
+        //     for (i =0; i < 5; i++) {
+        //         var unix_date = response.daily[i].dt;
+        //         var date = moment(unix_date, "X").format("MM/DD/YY");
+        //         foreDate.push(date);
+        //     }
+        // }
+        // function dailyHumid() {
+        //     for (i =0; i < 5; i++) {
+        //         var dailyHumid = response.daily[i].humidity;
+        //         foreHumid.push(dailyHumid);
+        //     }
+        // }
+        // function dailyIcon() {
+        //     for (i =0; i < 5; i++) {
+        //         var dailyIcon = response.daily[i].weather[0].icon;
+        //         foreIcon.push(dailyIcon);
+        //     }
+        // }
 
-        dailyTemp();
-        dailyDate();
-        dailyHumid();
-        dailyIcon();
+        // dailyTemp();
+        // dailyDate();
+        // dailyHumid();
+        // dailyIcon();
 
-        console.log(foreDate);
-        console.log(foreTemp);
-        console.log(foreHumid);
-        console.log(foreIcon);
+        // took the above code and moved all of it into an array
+
+        var dailyForecast = new Array ();
+        for (var i = 0; i < 5; i++) {
+            dailyForecast.push({temp : response.daily[i].temp.day, date : moment((response.daily[i].dt), "X").format("MM/DD/YY"), humidity:response.daily[i].humidity, icon:response.daily[i].weather[0].icon});
+        }
+        
+        console.log(dailyForecast);
+
+
+
 
     });
     $("#city").html(response.name);
