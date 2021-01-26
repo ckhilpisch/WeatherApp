@@ -1,8 +1,8 @@
 var apiKey = "73d3cee72322c512646546f162d5afe5";
 var cities = [];
 var temp = (".temp");
-var todaysDate = moment().format('LL');
-$("#todayDate").html(todaysDate);
+// var todaysDate = moment().format('LL');
+// $("#todayDate").html(todaysDate);
 function showWeather () {
     city = $("#cityEntered").val().trim();
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
@@ -99,6 +99,7 @@ $.ajax ({
 
     });
     $("#city").html(response.name);
+    $("#city").append(" " + moment((response.dt), "X").format("MM/DD/YY"));
 });
 
 };
