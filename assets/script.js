@@ -23,7 +23,7 @@ $.ajax ({
         $("#windSpeed").html("Wind Speed: " + response.current.wind_speed +" MPH");
         $("#uvIndex").html("UV Index: " + response.current.uvi);
         console.log(queryURL2);
-
+        // create a rendering of daily data here
         // // tracing where the extra days data is
         // console.log(response.daily[0].temp.day);
         // console.log(response.daily[0].humidity);
@@ -31,6 +31,48 @@ $.ajax ({
         // var unix_date = response.daily[0].dt
         // var date = moment(unix_date, "X");
         // console.log(date.format("MM/DD/YY"));
+        var foreDate = [];
+        var foreTemp = [];
+        var foreHumid = [];
+        var foreIcon = [];
+        
+        function dailyTemp() {
+            for (i =0; i < 5; i++) {
+                var dailyTemp = response.daily[i].temp.day
+                foreTemp.push(dailyTemp);
+            }
+        }
+        function dailyDate() {
+            for (i =0; i < 5; i++) {
+                var unix_date = response.daily[i].dt
+                var date = moment(unix_date, "X");
+                date.format("MM/DD/YY");
+                foreDate.push(date);
+            }
+        }
+        function dailyHumid() {
+            for (i =0; i < 5; i++) {
+                var dailyHumid = response.daily[i].humidity;
+                foreHumid.push(dailyHumid);
+            }
+        }
+        function dailyIcon() {
+            for (i =0; i < 5; i++) {
+                var dailyIcon = response.daily[i].weather[0].icon;
+                foreIcon.push(dailyIcon);
+            }
+        }
+
+        dailyTemp();
+        dailyDate();
+        dailyHumid();
+        dailyIcon();
+
+        console.log(foreDate);
+        console.log(foreTemp);
+        console.log(foreHumid);
+        console.log(foreIcon);
+
     });
     $("#city").html(response.name);
 });
