@@ -71,7 +71,6 @@ $.ajax ({
         // took the above code and moved all of it into an array
         var iconUrl ="http://openweathermap.org/img/wn/" + icon[i] + ".png";
         
-        $(this).attr('src', iconUrl + $dailyIcons[index] + '.png');
         var dailyForecast = new Array ();
         for (var i = 0; i < 5; i++) {
             dailyForecast.push({temp : response.daily[i].temp.day, date : moment((response.daily[i].dt), "X").format("MM/DD/YY"), humidity:response.daily[i].humidity, icon:response.daily[i].weather[0].icon});
