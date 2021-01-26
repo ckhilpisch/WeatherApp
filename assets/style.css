@@ -48,6 +48,7 @@
   }
   .col-sm-8 {
     margin: auto;
+    padding: 20px;
   }
   #cityCont {
     border-style: solid, 1px;
@@ -55,9 +56,9 @@
   }
 
   .city {
-    width: 400px;
+    width: 420px;
     text-align: center;
-    background-color: grey;
+    background-color: rgb(14, 209, 216);
     color: white;
   }
 

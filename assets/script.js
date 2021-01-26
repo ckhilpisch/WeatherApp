@@ -44,9 +44,8 @@ $.ajax ({
         }
         function dailyDate() {
             for (i =0; i < 5; i++) {
-                var unix_date = response.daily[i].dt
-                var date = moment(unix_date, "X");
-                date.format("MM/DD/YY");
+                var unix_date = response.daily[i].dt;
+                var date = moment(unix_date, "X").format("MM/DD/YY");
                 foreDate.push(date);
             }
         }
