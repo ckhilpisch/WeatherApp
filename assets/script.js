@@ -1,11 +1,8 @@
 var apiKey = "73d3cee72322c512646546f162d5afe5";
 var cities = []
-// function showWeather () {
-
-// var cityName = $("#cityEntered").val().trim();
-var cityName = "Minneapolis"
-
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+function showWeather () {
+    city = $("#cityEntered").val().trim();
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
   
 $.ajax ({
     url: queryURL,
@@ -27,38 +24,43 @@ $.ajax ({
         $("#uvIndex").html("UV Index: " + response.current.uvi);
         console.log(queryURL2);
 
-        // tracing where the extra days data is
-        console.log(response.daily[0].temp.day);
-        console.log(response.daily[0].humidity);
-        console.log(response.daily[0].weather[0].icon);
-        var unix_date = response.daily[0].dt
-        var date = moment(unix_date, "X");
-        console.log(date.format("MM/DD/YY"));
-
+        // // tracing where the extra days data is
+        // console.log(response.daily[0].temp.day);
+        // console.log(response.daily[0].humidity);
+        // console.log(response.daily[0].weather[0].icon);
+        // var unix_date = response.daily[0].dt
+        // var date = moment(unix_date, "X");
+        // console.log(date.format("MM/DD/YY"));
     });
-
     $("#city").html(response.name);
+});
+
+};
+
+// create a function so that the buttons of each city chosen render on the page
+function renderButtons() {
+    $("#citiesButtons").empty();
+    for (var i = 0; i < cities.length; i++) {
+
+      var button = $("<button>");
+      button.attr("class", "city");
+      button.attr("data-city", cities[i]);
+      button.text(cities[i]);
+
+      $("#citiesButtons").append(button);
+
+    }
+  }
+
+$("#weatherCity").on("click", function(event) {
+    event.preventDefault();
+
+var city = $("#cityEntered").val().trim();
+  renderButtons ();
+  cities.push(city);
+  showWeather();
 
 });
 
-// };
-// create a function so that the buttons of each city chosen render on the page
-// function renderButtons() {
-//     $("#citiesButtons").empty();
-//     for (var i = 0; i < cities.length; i++) {
-
-//       var button = $("<button>");
-//       button.attr("class", "city");
-//       button.attr("data-city", cities[i]);
-//       button.text(cities[i]);
-
-//       $("#citiesButtons").append(button);
-
-//     }
-//   }
-//   renderButtons ();
-
-
-
-// showWeather();
-
+$(document).on("click", ".city", showWeather)
+renderButtons();
