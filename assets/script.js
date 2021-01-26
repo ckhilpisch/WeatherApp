@@ -1,6 +1,8 @@
 var apiKey = "73d3cee72322c512646546f162d5afe5";
 var cities = [];
 var temp = (".temp");
+var todaysDate = moment().format('LL');
+$("#todayDate").html(todaysDate);
 function showWeather () {
     city = $("#cityEntered").val().trim();
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
@@ -69,17 +71,18 @@ $.ajax ({
         // dailyIcon();
 
         // took the above code and moved all of it into an array
-        var iconUrl ="http://openweathermap.org/img/wn/" + icon[i] + ".png";
+        // var iconUrl ="http://openweathermap.org/img/wn/" + icon[i] + ".png";
         
         var dailyForecast = new Array ();
         for (var i = 0; i < 5; i++) {
-            dailyForecast.push({temp : response.daily[i].temp.day, date : moment((response.daily[i].dt), "X").format("MM/DD/YY"), humidity:response.daily[i].humidity, icon:response.daily[i].weather[0].icon});
+            dailyForecast.push({
+                temp : response.daily[i].temp.day,
+                date : moment((response.daily[i].dt), "X").format("MM/DD/YY"),
+                humidity : response.daily[i].humidity, 
+                icon : "https://openweathermap.org/img/wn/" + response.daily[i].weather[0].icon + ".png"});
         }
         
         console.log(dailyForecast);
-
-
-
 
     });
     $("#city").html(response.name);
