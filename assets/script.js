@@ -74,7 +74,7 @@ $.ajax ({
         // var iconUrl ="http://openweathermap.org/img/wn/" + icon[i] + ".png";
         
         var dailyForecast = new Array ();
-        for (var i = 0; i < 5; i++) {
+        for (var i = 1; i < 6; i++) {
             dailyForecast.push({
                 temp : response.daily[i].temp.day,
                 date : moment((response.daily[i].dt), "X").format("MM/DD/YY"),
@@ -100,6 +100,9 @@ $.ajax ({
     });
     $("#city").html(response.name);
     $("#city").append(" " + moment((response.dt), "X").format("MM/DD/YY"));
+    $("#city").append('<img src=https://openweathermap.org/img/wn/' + response.weather[0].icon + ".png">');
+    
+
 });
 
 };
