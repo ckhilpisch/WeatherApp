@@ -50,13 +50,17 @@
     margin: auto;
     padding: 20px;
   }
+
+  .col-sm-4 {
+    margin-top: 40px;
+  }
   #cityCont {
     border-style: solid, 1px;
     border-color: black;
   }
 
   .city {
-    width: 420px;
+    width: 100%;
     text-align: center;
     background-color: rgb(14, 209, 216);
     color: white;
