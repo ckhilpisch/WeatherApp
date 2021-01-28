@@ -104,8 +104,7 @@ $(document).ready(function () {
         );
       },
     });
-  }
-  
+  };
   function renderButtons() {
     $("#citiesButtons").empty();
     $("#cityEntered").empty();
