@@ -2,24 +2,26 @@ $(document).ready(function() {
 
     var apiKey = "73d3cee72322c512646546f162d5afe5";
     var cities = [];
-    var storedcities = JSON.parse(localStorage.getItem(storedcities));
+//     var stored = JSON.parse(localStorage.getItem(storedcities));
 
-    function storedCities () {
+//     function cats () {
         
-    if (storedcities != null) {
-        for (var i = 0; i < storedcities.length; i++) {
-            var button = $("<button>");
-            button.attr("class", "city");
-            button.attr("data-city", storedcities[i]);
-            button.text(storedcities[i]);
-            $("#citiesButtons").append(button);
-        };
-    } else {
-        storedcities = [];
-    }
-    console.log(storedcities);
-}
-storedCities;
+//     if (stored != null) {
+//         for (var i = 0; i < stored.length; i++) {
+//             var button = $("<button>");
+//             button.attr("class", "city");
+//             button.attr("data-city", stored[i]);
+//             button.text(stored[i]);
+//             $("#citiesButtons").append(button);
+            
+//         };
+//     } else {
+//         stored = [];
+//     }
+    
+// }
+// cats ();
+// console.log(stored);
 
 function showWeather () {
     city = $("#cityEntered").val().trim();
@@ -88,24 +90,38 @@ function showWeather () {
 
 function renderButtons() {
     $("#citiesButtons").empty();
+    $("#cityEntered").empty();
+
     for (var i = 0; i < cities.length; i++) {
         var button = $("<button>");
         button.attr("class", "city");
         button.attr("data-city", cities[i]);
         button.text(cities[i]);
+        button.click(function(event) {
+            event.preventDefault()
+            showWeather($(this).attr("data-city"));
+        })
+
         $("#citiesButtons").append(button);
     }
 };
 
 $("#weatherCity").on("click", function(event) {
     event.preventDefault();
+    $("#cityEntered").empty();
     var city = $("#cityEntered").val().trim();
+    var $forecast = $(".card-forecast");
     cities.push(city);
     renderButtons ();
     showWeather();
     localStorage.setItem("storedcities", JSON.stringify(cities))
+    localStorage.setItem("last-city", JSON.stringify($forecast))
+    console.log(storedcities);
+    console.log(last-city);
+    
+
 });
 
-$(document).on("click", ".city", showWeather);
-renderButtons();
+
+// $(".city").on('click', showWeather())
 })
