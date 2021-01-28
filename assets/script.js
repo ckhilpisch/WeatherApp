@@ -2,26 +2,27 @@ $(document).ready(function() {
 
     var apiKey = "73d3cee72322c512646546f162d5afe5";
     var cities = [];
-//     var stored = JSON.parse(localStorage.getItem(storedcities));
-
-//     function cats () {
+    var savedCities = JSON.parse(localStorage.getItem('storedCities'));
+    console.log(savedCities);
+   function retrieveJSON() {
         
-//     if (stored != null) {
-//         for (var i = 0; i < stored.length; i++) {
-//             var button = $("<button>");
-//             button.attr("class", "city");
-//             button.attr("data-city", stored[i]);
-//             button.text(stored[i]);
-//             $("#citiesButtons").append(button);
+    if (savedCities != null) {
+            cities = savedCities;
+            for (var i = 0; i < cities.length; i++) {
+                var button = $("<button>");
+                button.attr("class", "city");
+                button.attr("data-city", cities[i]);
+                button.text(cities[i]);
+                $("#citiesButtons").append(button);
             
-//         };
-//     } else {
-//         stored = [];
-//     }
+             };
+        showWeather(savedCities[savedCities.length-1]);
+    } else {
+        savedCities = [];
+    }
     
-// }
-// cats ();
-// console.log(stored);
+};
+retrieveJSON();
 
 function showWeather (city) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
@@ -107,7 +108,7 @@ $("#weatherCity").on("click", function(event) {
     cities.push(city);
     renderButtons ();
     showWeather(city);
-    localStorage.setItem("storedcities", JSON.stringify(cities))
+    localStorage.setItem("storedCities", JSON.stringify(cities))
     console.log(cities);
 });
 
