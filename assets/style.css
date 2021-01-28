@@ -60,7 +60,8 @@
   }
 
   .city {
-    width: 100%;
+    width: 74%;
+    height: 60px;
     text-align: center;
     background-color: rgb(14, 209, 216);
     color: white;
@@ -77,4 +78,11 @@
 
   .example {
     background-color: teal;
+  }
+
+  #uvIndex {
+    width : 150px;
+    font-weight : bold;
+    padding-left: 10px;
+    color: white;
   }

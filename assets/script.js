@@ -1,10 +1,28 @@
-var apiKey = "73d3cee72322c512646546f162d5afe5";
-var cities = [];
-var temp = (".temp");
+$(document).ready(function() {
+
+    var apiKey = "73d3cee72322c512646546f162d5afe5";
+    var cities = [];
+    var storedcities = JSON.parse(localStorage.getItem(cities));
+
+    function storedCities () {
+    if (storedcities != null) {
+        for (var i = 0; i < storedcities.length; i++) {
+            var button = $("<button>");
+            button.attr("class", "city");
+            button.attr("data-city", storedcities[i]);
+            button.text(storedcities[i]);
+            $("#citiesButtons").append(button);
+        };
+    } else {
+        storedcities = [];
+    }
+    console.log(storedcities);
+}
+storedCities;
+
 function showWeather () {
     city = $("#cityEntered").val().trim();
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
-  
     $.ajax ({
         url: queryURL,
         method: "GET",
@@ -27,11 +45,18 @@ function showWeather () {
                     $("#humidity").html("Humidity: " + response.current.humidity +"%");
                     $("#windSpeed").html("Wind Speed: " + response.current.wind_speed +" MPH");
                     $("#uvIndex").html("UV Index: " + uvIndex);
+                    
+                    
+                    if (uvIndex <= 2) {
+                        $("#uvIndex").css("background-color", "green");
+                    } else if (uvIndex >=3 && uvIndex < 5) {
+                        $("#uvIndex").css({"background-color": "yellow", "color" : "black",});
+                    } else if (uvIndex>= 6 && uvIndex < 8) {
+                        $("#uvIndex").css("background-color", "red");
+                    } else if (uvIndex >= 9) {
+                        $("#uvIndex").css("background-color", "purple");
+                    };
 
-                    if (uvIndex)
-
-
-                
                     var dailyForecast = new Array ();
                     for (var i = 1; i < 6; i++) {
                         dailyForecast.push({
@@ -67,24 +92,19 @@ function renderButtons() {
         button.attr("class", "city");
         button.attr("data-city", cities[i]);
         button.text(cities[i]);
-
         $("#citiesButtons").append(button);
-
     }
 };
 
 $("#weatherCity").on("click", function(event) {
     event.preventDefault();
-
     var city = $("#cityEntered").val().trim();
-  
     cities.push(city);
     renderButtons ();
     showWeather();
-    localStorage.setItem("cities", JSON.stringify(cities))
-    localStorage.setItem("")
+    localStorage.setItem("storedcities", JSON.stringify(cities))
 });
 
-$(document).on("click", ".city", showWeather());
-// renderButtons();
-// showWeather();
+$(document).on("click", ".city", showWeather);
+renderButtons();
+})
