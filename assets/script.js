@@ -77,7 +77,8 @@ function showWeather (city) {
                         $element.find(".forecastTemp").html("Temp: " + currentDay.temp +"  &deg F" );
                         $element.find(".forecastHumidity").html("Humidity: " + currentDay.humidity + " %");
                     }
-    
+                    localStorage.setItem("fiveDay", JSON.stringify(dailyForecast))
+                    console.log(dailyForecast);
                 });
             $("#city").html(response.name);
             $("#city").append(" " + moment((response.dt), "X").format("MM/DD/YY"));
@@ -96,29 +97,18 @@ function renderButtons() {
         button.attr("class", "city");
         button.attr("data-city", cities[i]);
         button.text(cities[i]);
-        // button.click(function(event) {
-        //     event.preventDefault()
-        //     showWeather($(this).attr("data-city"));
-        // })
-
         $("#citiesButtons").append(button);
     }
 };
 
 $("#weatherCity").on("click", function(event) {
-    // $("#cityEntered").empty();
     event.preventDefault();
     var city = $("#cityEntered").val().trim();
-    var $forecast = $(".card-forecast");
     cities.push(city);
     renderButtons ();
     showWeather(city);
     localStorage.setItem("storedcities", JSON.stringify(cities))
-    localStorage.setItem("last-city", JSON.stringify($forecast))
-    console.log(storedcities);
-    console.log(last-city);
-    
-
+    console.log(cities);
 });
 
 $(document).on('click', '.city', function(e){
