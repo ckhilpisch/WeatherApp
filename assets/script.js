@@ -23,8 +23,7 @@ $(document).ready(function() {
 // cats ();
 // console.log(stored);
 
-function showWeather () {
-    city = $("#cityEntered").val().trim();
+function showWeather (city) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
     $.ajax ({
         url: queryURL,
@@ -97,23 +96,23 @@ function renderButtons() {
         button.attr("class", "city");
         button.attr("data-city", cities[i]);
         button.text(cities[i]);
-        button.click(function(event) {
-            event.preventDefault()
-            showWeather($(this).attr("data-city"));
-        })
+        // button.click(function(event) {
+        //     event.preventDefault()
+        //     showWeather($(this).attr("data-city"));
+        // })
 
         $("#citiesButtons").append(button);
     }
 };
 
 $("#weatherCity").on("click", function(event) {
+    // $("#cityEntered").empty();
     event.preventDefault();
-    $("#cityEntered").empty();
     var city = $("#cityEntered").val().trim();
     var $forecast = $(".card-forecast");
     cities.push(city);
     renderButtons ();
-    showWeather();
+    showWeather(city);
     localStorage.setItem("storedcities", JSON.stringify(cities))
     localStorage.setItem("last-city", JSON.stringify($forecast))
     console.log(storedcities);
@@ -122,6 +121,8 @@ $("#weatherCity").on("click", function(event) {
 
 });
 
+$(document).on('click', '.city', function(e){
+    showWeather($(this).text())
 
-// $(".city").on('click', showWeather())
+})
 })
