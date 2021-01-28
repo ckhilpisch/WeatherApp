@@ -7,6 +7,9 @@ $(document).ready(function () {
     if (savedCities != null) {
       cities = savedCities;
       for (var i = 0; i < cities.length; i++) {
+        //   if (i ==8) {
+        //       break;
+        //   }
         var button = $("<button>");
         button.attr("class", "city");
         button.attr("data-city", cities[i]);
@@ -21,38 +24,40 @@ $(document).ready(function () {
   retrieveJSON();
 
   function showWeather(city, addCity = false) {
-    var queryURL =
-      "https://api.openweathermap.org/data/2.5/weather?q=" +
-      city +
-      "&appid=" +
-      apiKey;
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-      error: function (xhr, status, error) {
-        var errorMessage = xhr.status + ": " + xhr.statusText;
-        // alert("Error - " + errorMessage);
+        var queryURL =
+         "https://api.openweathermap.org/data/2.5/weather?q=" +
+        city +
+        "&appid=" +
+         apiKey;
+        $.ajax({
+        url: queryURL,
+        method: "GET",
+        error: function (xhr, status, error) {
+         var errorMessage = xhr.status + ": " + xhr.statusText;
+            // alert("Error - " + errorMessage);
         console.log(errorMessage)
-      },
-      success: function (response) {
-        var lat = response.coord.lat;
-        var lon = response.coord.lon;
+         },
+        success: function (response) {
+            var lat = response.coord.lat;
+            var lon = response.coord.lon;
 
-        if (addCity) {
-                $("#citiesButtons").empty();
-                $("#cityEntered").empty();
-            
+            if (addCity) {
+                 $("#citiesButtons").empty();
+                 cities.push(city);
+                
                 for (var i = 0; i < cities.length; i++) {
                   var button = $("<button>");
                   button.attr("class", "city");
                   button.attr("data-city", cities[i]);
                   button.text(cities[i]);
-                  $("#citiesButtons").append(button);
-                
-              }
-        }
+                  $("#citiesButtons").append(button);   
+                }
+            }
+
         
-        var queryURL2 =
+     
+        
+            var queryURL2 =
           "https://api.openweathermap.org/data/2.5/onecall?lat=" +
           lat +
           "&lon=" +
@@ -120,6 +125,8 @@ $(document).ready(function () {
         );
       },
     });
+    localStorage.setItem("storedCities", JSON.stringify(cities));
+    console.log(cities);
   };
 //   function renderButtons() {
 //     $("#citiesButtons").empty();
@@ -133,13 +140,11 @@ $(document).ready(function () {
 //       $("#citiesButtons").append(button);
 //     }
 //   }
-localStorage.setItem("storedCities", JSON.stringify(cities));
-    console.log(cities);
+
 
   $("#weatherCity").on("click", function (event) {
     event.preventDefault();
     var city = $("#cityEntered").val().trim();
-    cities.push(city);
     // renderButtons();
     showWeather(city, true);
     
