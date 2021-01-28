@@ -2,9 +2,10 @@ $(document).ready(function() {
 
     var apiKey = "73d3cee72322c512646546f162d5afe5";
     var cities = [];
-    var storedcities = JSON.parse(localStorage.getItem(cities));
+    var storedcities = JSON.parse(localStorage.getItem(storedcities));
 
     function storedCities () {
+        
     if (storedcities != null) {
         for (var i = 0; i < storedcities.length; i++) {
             var button = $("<button>");
