@@ -20,7 +20,7 @@ $(document).ready(function () {
   }
   retrieveJSON();
 
-  function showWeather(city) {
+  function showWeather(city, addCity = false) {
     var queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
@@ -31,11 +31,27 @@ $(document).ready(function () {
       method: "GET",
       error: function (xhr, status, error) {
         var errorMessage = xhr.status + ": " + xhr.statusText;
-        alert("Error - " + errorMessage);
+        // alert("Error - " + errorMessage);
+        console.log(errorMessage)
       },
       success: function (response) {
         var lat = response.coord.lat;
         var lon = response.coord.lon;
+
+        if (addCity) {
+                $("#citiesButtons").empty();
+                $("#cityEntered").empty();
+            
+                for (var i = 0; i < cities.length; i++) {
+                  var button = $("<button>");
+                  button.attr("class", "city");
+                  button.attr("data-city", cities[i]);
+                  button.text(cities[i]);
+                  $("#citiesButtons").append(button);
+                
+              }
+        }
+        
         var queryURL2 =
           "https://api.openweathermap.org/data/2.5/onecall?lat=" +
           lat +
@@ -105,27 +121,28 @@ $(document).ready(function () {
       },
     });
   };
-  function renderButtons() {
-    $("#citiesButtons").empty();
-    $("#cityEntered").empty();
+//   function renderButtons() {
+//     $("#citiesButtons").empty();
+//     $("#cityEntered").empty();
 
-    for (var i = 0; i < cities.length; i++) {
-      var button = $("<button>");
-      button.attr("class", "city");
-      button.attr("data-city", cities[i]);
-      button.text(cities[i]);
-      $("#citiesButtons").append(button);
-    }
-  }
+//     for (var i = 0; i < cities.length; i++) {
+//       var button = $("<button>");
+//       button.attr("class", "city");
+//       button.attr("data-city", cities[i]);
+//       button.text(cities[i]);
+//       $("#citiesButtons").append(button);
+//     }
+//   }
+localStorage.setItem("storedCities", JSON.stringify(cities));
+    console.log(cities);
 
   $("#weatherCity").on("click", function (event) {
     event.preventDefault();
     var city = $("#cityEntered").val().trim();
     cities.push(city);
-    renderButtons();
-    showWeather(city);
-    localStorage.setItem("storedCities", JSON.stringify(cities));
-    console.log(cities);
+    // renderButtons();
+    showWeather(city, true);
+    
   });
 
   $(document).on("click", ".city", function (e) {
