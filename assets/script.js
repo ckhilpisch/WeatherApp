@@ -144,6 +144,7 @@ $(document).ready(function () {
 
   $("#weatherCity").on("click", function (event) {
     event.preventDefault();
+    // $("#weatherCity").empty();
     var city = $("#cityEntered").val().trim();
     // renderButtons();
     showWeather(city, true);
