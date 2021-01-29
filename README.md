@@ -25,4 +25,4 @@ I was able to talk to another BCS TA who assured me that the three parameter on-
 I was finally, FINALLY able to retrieve the JSON.   THe reason it wasn't working was the silliest.  I had forgoteen quotes because the stored key is a string.  	:astonished:
 Last up was formatting the page and taking the time to do some extra styling.  I love the page now.
 This was the first homework assignment where I didn't feel completely lost from the onset.  I was able to think things through and get a lot of the coding done without having to do a ton of research. 
-This was by far the biggest rollercoaster of an assignment for me to.  :roller_coaster:>  Maybe because I was able to do a lot on my own, the highs felt extra delicious.  The lows were pretty brutal too.  I am happy with the outcome. ![MyPage](assets/MyWeather.png)
+This was by far the biggest rollercoaster of an assignment for me to.  :roller_coaster:>  Maybe because I was able to do a lot on my own, the highs felt extra delicious.  The lows were pretty brutal too.  I am happy with the outcome.  Here is the link:  https://ckhilpisch.github.io/Weather_06/ ![MyPage](assets/MyWeather.png)
