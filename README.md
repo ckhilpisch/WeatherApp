@@ -1,5 +1,5 @@
-For this assignment, we were supposed to create a dynamic weather site.   The example given in class is the following: ![Weather Site](Weather_goal_6.png)  
-The accepatance criteria were as follows: ![Criteria](Weather_criteria-6.png)
+For this assignment, we were supposed to create a dynamic weather site.   The example given in class is the following: ![Weather Site](assets/Weather_goal_6.png)  
+The accepatance criteria were as follows: ![Criteria](assets/Weather_criteria_6.png)
 
 I started off in the usual way, adding an HTML page, a CSS page, and a Javascript.   Within the index I placed a Bootstrap, a jQuery, a moment.js, my own Javascript, and an icon styling link.  I did a jumbotron to hold the Weather Dashboard, and then created the search button and field and styled them.  I then left a cities div with nothing inside of it.  I intially didn't know if I was going to dynamically create the page or create the set up and push information to the existing page.  I was leaning towrds dynamic, so I did a bare bones outline.  
 I then created a query call to ajax.   I set up a variable using the key I received.   I intially set the city as Minneapolis, just to be able to have the information populate so I could get an idea of what the layout of the land was.  I also did this so I could travel through the response and pinpoint where the information that I needed was. 
@@ -25,4 +25,4 @@ I was able to talk to another BCS TA who assured me that the three parameter on-
 I was finally, FINALLY able to retrieve the JSON.   THe reason it wasn't working was the silliest.  I had forgoteen quotes because the stored key is a string.  	:astonished:
 Last up was formatting the page and taking the time to do some extra styling.  I love the page now.
 This was the first homework assignment where I didn't feel completely lost from the onset.  I was able to think things through and get a lot of the coding done without having to do a ton of research. 
-This was by far the biggest rollercoaster of an assignment for me to.  :roller_coaster:>  Maybe because I was able to do a lot on my own, the highs felt extra delicious.  The lows were pretty brutal too.  I am happy with the outcome. ![MyPage](MyWeather.png)
+This was by far the biggest rollercoaster of an assignment for me to.  :roller_coaster:>  Maybe because I was able to do a lot on my own, the highs felt extra delicious.  The lows were pretty brutal too.  I am happy with the outcome. ![MyPage](assets/MyWeather.png)
