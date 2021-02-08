@@ -26,3 +26,5 @@ I was finally, FINALLY able to retrieve the JSON.   THe reason it wasn't working
 Last up was formatting the page and taking the time to do some extra styling.  I love the page now.
 This was the first homework assignment where I didn't feel completely lost from the onset.  I was able to think things through and get a lot of the coding done without having to do a ton of research. 
 This was by far the biggest rollercoaster of an assignment for me to.  :roller_coaster:>  Maybe because I was able to do a lot on my own, the highs felt extra delicious.  The lows were pretty brutal too.  I am happy with the outcome.  Here is the link:  https://ckhilpisch.github.io/Weather_06/ ![MyPage](assets/MyWeather.png)
+Here is the app in action:
+![Weather Action](assets/Weather_Demo.gif)  

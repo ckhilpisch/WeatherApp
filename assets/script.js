@@ -57,7 +57,7 @@ $(document).ready(function () {
         
      
         
-            var queryURL2 =
+          var queryURL2 =
           "https://api.openweathermap.org/data/2.5/onecall?lat=" +
           lat +
           "&lon=" +
