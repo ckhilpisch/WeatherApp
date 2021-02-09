@@ -1,30 +1,40 @@
-For this assignment, we were supposed to create a dynamic weather site.   The example given in class is the following: ![Weather Site](assets/Weather_goal_6.png)  
+# Assignment 6:
+## Title: Weather App
+Create a weather app like the following:
+![Weather Site](assets/Weather_goal_6.png)
+
+# Requirements
 The accepatance criteria were as follows: ![Criteria](assets/Weather_criteria_6.png)
 
-I started off in the usual way, adding an HTML page, a CSS page, and a Javascript.   Within the index I placed a Bootstrap, a jQuery, a moment.js, my own Javascript, and an icon styling link.  I did a jumbotron to hold the Weather Dashboard, and then created the search button and field and styled them.  I then left a cities div with nothing inside of it.  I intially didn't know if I was going to dynamically create the page or create the set up and push information to the existing page.  I was leaning towrds dynamic, so I did a bare bones outline.  
-I then created a query call to ajax.   I set up a variable using the key I received.   I intially set the city as Minneapolis, just to be able to have the information populate so I could get an idea of what the layout of the land was.  I also did this so I could travel through the response and pinpoint where the information that I needed was. 
-Next I set up all my query calls.  This assignment required a nested ajax call.  I needed to use information from the first call to get the second layer of information (in this case, the latitude and longitude of the chosen city).  I then created a block for the information about the current weather to be held.  I decided to build the page and send the items to the page.  The only items I decided to dynamically create were the new buttons of each city on the page.  I consoled logged the information to make sure that I was populating the correct information to the page.  I then used the created places to send the needed information.
-I made a function to create new buttons with each searched city's name in it.  I then placed the buttons on the page.  I added a little styling to the buttons on the page.  
-I then created some class cards to push the future forecasts to.   I did five separate cards, all with the same elememts in them.  
-I initially did the temperature in Kelvin, but was delighted :delighted: to find out that I could use a parameter of imperial in my search to make the degrees Farenheit and the wind speed in MPH.  I then wrapped all of my query and temperature creation to the page into a function called showWeather.  
-I then created a function and a for loop to build each of the things I needed on the five day forecast, which were the humidty, the temperature, the UV Index, and an Icon from the weather API.  I console logged to make sure the proper information was coming through.  I ran into a little snag on the UNIX time, and had to do some research to figure out how to transfer Unix into a date. 
-The code was looking super repetitive, so I took a stab at creating a function to collect all the data.  I was able to do it and truly felt on top of the world.  It was only temporary, but what a rush.    
-I changed the displays to cards, because I am using bootstrap and they just looked more polished.  I was able to figure out how to get the icons on display using a url from the openWeather API. :sun_behind_rain_cloud: I cleaned up the array push of the daily forecast so it was more legible on the screen.  I added a class of card-forecast to all the cards to use as an identifier for where the information should go.
-I realized that I needed more information from the query URL.  I had been having problems with the page crashing (even the smallest mistakes made the wheels fall off ), so I created a second index page.   I called it testindex and just used it to be able to figure out the path to the information I needed in the query.
-Intially the date I used was set up via moment.  I found it easier to just use the date provided by the weather API.  I appended the city title with it, and then appended the date with the current weather icon.  
-I realized that my dailyforecast was including today's date, because duh.  Thats the date at 0.  I changed the parameters from 0 to 5 to 1 to 6.  Fixed it immediately.  
-Next up I created an oldjavascript file to move all the unused code to.  I am always loathe to delete anything, so this was a solution that worked out for me.  
-Next up was adding a success and failure parameter to the query.   This was a way that I was able to not have non-cities make it through the click function.  
-Next up was the local storage via JSON.  This was probably the most infuriating part of the assignment.  I had working code up until this point, and everything thing I did seemed to kill the page.  :woman_facepalming:
-I took a break and decided to do the UV Index styling.  I just used an if else statment to run through the different types of UV indices.  I added the style inside the if statements. I then moved all of the unindividual style componenets to the style sheet. Turned out great.   Back on top of the world, for a minute.  
-Only took a little time to be back down in it.  The JSON was KILLING ME. :knife:
-I reached out to BCS, but wasn't able to make much progress with the tutor.  He told me to remove the on-click event at the bottom of the page, because I could not pass three parameters and that was why my code was not working.  He also wasn't able to help with any guidance with the JSON and seemed as stumped as me.   I truly felt defeated.  :expressionless:
-I moved on to figuring out a way to clear the search field after a city had been clicked.  I did an onfocus value in the html with a blank value.  Seemed to do the trick!
-I then was able to store the five day forecast to JSON.  Just like the storedCities, the storing was not the issue.  It was the retrieving the data that was causing me so many issues.  
-I was able to talk to another BCS TA who assured me that the three parameter on-click function was fine, I just had to call an event to the showWeather function.  Thank goodness!!
-I was finally, FINALLY able to retrieve the JSON.   THe reason it wasn't working was the silliest.  I had forgoteen quotes because the stored key is a string.  	:astonished:
-Last up was formatting the page and taking the time to do some extra styling.  I love the page now.
-This was the first homework assignment where I didn't feel completely lost from the onset.  I was able to think things through and get a lot of the coding done without having to do a ton of research. 
-This was by far the biggest rollercoaster of an assignment for me to.  :roller_coaster:>  Maybe because I was able to do a lot on my own, the highs felt extra delicious.  The lows were pretty brutal too.  I am happy with the outcome.  Here is the link:  https://ckhilpisch.github.io/Weather_06/ ![MyPage](assets/MyWeather.png)
-Here is the app in action:
+# Technologies Used:
+### HTML
+### CSS
+### Bootstrap
+### JavaScript
+### jQuery
+### moment.js
+### Local Storage
+### JSON
+### AJAX
+
+# Usage: 
+This app helps show the user the weather for a specified city chosen by the user.   When entered, the app returns the current weather data as well as a five day forecast.   Then a button is created of the searched city that can later be clicked on to retrieve the weather information again.  The app shows the dates, the weather icon decribing the weather, a wind speed in MPH, a UV Index (that is color coded based on the number), the humidity,  and the temperature. 
+
+# Visuals:
+### Laptop:
+![MyPage](assets/MyWeather.png)
+
 ![Weather Action](assets/Weather_Demo.gif)  
+
+### Mobile:
+![Mobile GIF](assets/WeatherPhone.gif)
+
+# App Website:
+https://ckhilpisch.github.io/Weather_06/
+
+# Contact Info:
+Carolyn Hilpisch - ckhilpisch@gmail.com
+
+# License:
+
+MIT
