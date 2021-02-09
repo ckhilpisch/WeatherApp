@@ -18,7 +18,7 @@ The accepatance criteria were as follows: ![Criteria](assets/Weather_criteria_6.
 ### AJAX
 
 # Usage: 
-This app helps show the user the weather for a specified city chosen by the user.   When entered, the app returns the current weather data as well as a five day forecast.   Then a button is created of the searched city that can later be clicked on to retrieve the weather information again.  The app shows the dates, the weather icon decribing the weather, a wind speed in MPH, a UV Index (that is color coded based on the number), the humidity,  and the temperature. 
+This app helps show the user the weather for a specified city chosen by the user.   When entered, the app returns the current weather data as well as a five day forecast.   Then a button is created of the searched city that can later be clicked on to retrieve the weather information again.  The app shows the dates, the weather icon describing the weather, a wind speed in MPH, a UV Index (that is color coded based on the number), the humidity,  and the temperature. 
 
 # Visuals:
 ### Laptop:
