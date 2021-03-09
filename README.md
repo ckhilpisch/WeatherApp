@@ -1,5 +1,5 @@
-# Assignment 6:
-## Title: Weather App
+# The Weather App:
+
 Create a weather app like the following:
 ![Weather Site](assets/Weather_goal_6.png)
 
